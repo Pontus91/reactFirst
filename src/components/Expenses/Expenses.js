@@ -8,7 +8,7 @@ import ExpensesFilter from '../ExpensesFilter/ExpensesFilter';
 
 function Expenses (props) {
 
-    const [currentDataFromFilterComp, setDataFromFilterComp] = useState('2022');
+    const [currentDataFromFilterComp, setDataFromFilterComp] = useState('2021');
 
     const saveDataFromFilterCompInAStateHere = (valueFromFilterComp) => {
       setDataFromFilterComp(valueFromFilterComp);
@@ -21,7 +21,7 @@ function Expenses (props) {
     return (
       <div>
       <Card className="expenses">
-        <ExpensesFilter saveInAStateInExpComp={saveDataFromFilterCompInAStateHere} />
+        <ExpensesFilter currentValueToSet={currentDataFromFilterComp} saveInAStateInExpComp={saveDataFromFilterCompInAStateHere} />
 
         <ExpenseItem ti={props.item[0].title} am={props.item[0].amount} da={props.item[0].date} />
         <ExpenseItem ti={props.item[1].title} am={props.item[1].amount} da={props.item[1].date} />
