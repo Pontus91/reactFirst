@@ -32,9 +32,14 @@ const expenses = [
 ];
 
 
+const addExpenseHandlerFromChildNewExpense = (expense)=> {
+  console.log('in app.js!');
+  console.log(expense);
+}
+
   return (
     <div className="App">
-      <NewExpense />
+      <NewExpense onAddExpense={addExpenseHandlerFromChildNewExpense} />
       <Expenses item={expenses} />
     </div>
   );
