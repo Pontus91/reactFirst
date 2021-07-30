@@ -1,17 +1,17 @@
-import React , {useState} from 'react';
+import React from 'react';
 
 import './ExpensesFilter.css';
 
 function ExpensesFilter  (props)  {
 
-    const [currentDropdownValue, setDropdownValue] = useState('2022'); 
+    
 
     const listenToDropdownData = (event) => {
-        setDropdownValue(event.target.value);
+        props.saveInAStateInExpComp(event.target.value);
         
       }
 
-    props.saveInAStateInExpComp(currentDropdownValue);
+   
 
 
   return (
