@@ -3,9 +3,10 @@ import './ExpenseDate.css';
 
 
 function ExpenseDate(props) {
-    const month = props.da.toLocaleString("en-US", {month: "long"});
-    const year = props.da.getFullYear();
-    const day = props.da.toLocaleString("en-US", {day: "2-digit"});
+    const month = props.dateComp.toLocaleString('sv-SE', { month: 'long' });
+    const day = props.dateComp.toLocaleString('sv-SE', { day: '2-digit' });
+    const year = props.dateComp.getFullYear();
+    
 
 
     return (

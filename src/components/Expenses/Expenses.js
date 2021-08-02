@@ -12,26 +12,41 @@ function Expenses (props) {
 
     const saveDataFromFilterCompInAStateHere = (valueFromFilterComp) => {
       setDataFromFilterComp(valueFromFilterComp);
-
+ 
     }
+    
 
-    console.log(currentDataFromFilterComp);
+    const filteredExps = props.items.filter((item)=>{
+        const itemYear = item.date.getFullYear().toString();
+
+        return itemYear === currentDataFromFilterComp;
+    });
+ 
+
 
 
     return (
       <div>
       <Card className="expenses">
         <ExpensesFilter currentValueToSet={currentDataFromFilterComp} saveInAStateInExpComp={saveDataFromFilterCompInAStateHere} />
-
-        <ExpenseItem ti={props.item[0].title} am={props.item[0].amount} da={props.item[0].date} />
-        <ExpenseItem ti={props.item[1].title} am={props.item[1].amount} da={props.item[1].date} />
-        <ExpenseItem ti={props.item[2].title} am={props.item[2].amount} da={props.item[2].date} />
-        <ExpenseItem ti={props.item[3].title} am={props.item[3].amount} da={props.item[3].date} />
+        
+        
+        {
+        filteredExps.length === 0 ? 
+        
+        <p id="nef">No expenses found!</p> :
+        
+        filteredExps.map((expense)=>{
+          return <ExpenseItem key={expense.id} expTitle={expense.title} expAmount={expense.amount} expDate={expense.date} />
+        })
+        }
+        
+        
       </Card>
       </div>
 
     );
-}
+};
 
 
 export default Expenses;

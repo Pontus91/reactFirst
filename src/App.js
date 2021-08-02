@@ -1,12 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import NewExpense from './components/NewExpense/NewExpense';
 import Expenses from './components/Expenses/Expenses';
 
 
-function App() {
 
-    
-const expenses = [
+
+const DUMMY_EXPENSES = [
   {
     id: 'e1',
     title: 'Toilet Paper',
@@ -16,7 +15,8 @@ const expenses = [
   { id: 'e2',
     title: 'New TV',
     amount: 799.49, 
-    date: new Date(2021, 2, 12) },
+    date: new Date(2021, 2, 12), 
+  },
   {
     id: 'e3',
     title: 'Car Insurance',
@@ -29,18 +29,40 @@ const expenses = [
     amount: 450,
     date: new Date(2021, 5, 12),
   },
+  {
+    id: 'e5',
+    title: 'Muahahaha',
+    amount: 223340494,
+    date: new Date(2020, 3, 11),
+  },
 ];
 
 
+function App() {
+
+const [currentExps, setExps] = useState(DUMMY_EXPENSES);
+
+
+
+
+
+
 const addExpenseHandlerFromChildNewExpense = (expense)=> {
-  console.log('in app.js!');
-  console.log(expense);
-}
+   setExps((prevExps)=>{
+    return [expense, ...prevExps];
+   });
+  
+};
+
+
+
+
 
   return (
-    <div className="App">
-      <NewExpense onAddExpense={addExpenseHandlerFromChildNewExpense} />
-      <Expenses item={expenses} />
+    <div>
+      <NewExpense onAddExpense={addExpenseHandlerFromChildNewExpense} /> 
+
+      <Expenses items={currentExps} />
     </div>
   );
 }
